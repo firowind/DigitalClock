@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Digit implements IDigit
 {
+
 	private static final Map<Integer,String[][]> digitsText;
 	private static final Map<Integer,Boolean[]> digits;
 	
@@ -38,17 +39,14 @@ public class Digit implements IDigit
 	}
 	
 	private String[][] digitText = new String[DIGIT_TEXT_WIDTH][DIGIT_TEXT_HEIGHT];
-	private Boolean[] digit = new Boolean[7];
 	private int index;
 	
 	public Digit() {
-		this.digit = digit0;
 		this.digitText = digitText0;
 	}
 	
 	public Digit(int index) {
 		this.index = index;
-		this.digit = digits.get(index);
 		this.digitText = digitsText.get(index);
 	}
 	

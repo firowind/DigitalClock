@@ -1,7 +1,7 @@
 package ca.someware.digitalclock;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -9,13 +9,9 @@ import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+@SuppressWarnings("serial")
 public class Watch extends JFrame
-{
-	/**
-	 * v1.0 Initial
-	 */
-	private static final long serialVersionUID = 1L;
-	
+{	
 	private JPopupMenu jpmRightClick;
 	private JMenuItem jmiTest;
 
@@ -28,7 +24,7 @@ public class Watch extends JFrame
 		super();
 		init();
 		
-		new Timer(display);
+		new Clock(display);
 	}
 
 	private void init()
@@ -36,9 +32,7 @@ public class Watch extends JFrame
 		
 		display = new Display();
 
-		display.addMouseListener(new MouseListener() {
-
-			public void mouseClicked(MouseEvent me) { }
+		display.addMouseListener(new MouseAdapter() {
 
 			public void mouseEntered(MouseEvent me) {
 				mouseIn = true;
@@ -47,8 +41,6 @@ public class Watch extends JFrame
 			public void mouseExited(MouseEvent me) {
 				mouseIn = false;
 			}
-
-			public void mousePressed(MouseEvent me) { }
 
 			public void mouseReleased(MouseEvent me) {
 				if (mouseIn && SwingUtilities.isRightMouseButton(me)) {
@@ -63,7 +55,7 @@ public class Watch extends JFrame
 
 		this.add(display);
 
-
+		
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.pack();

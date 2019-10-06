@@ -51,25 +51,6 @@ public class Display extends JPanel
 		millisecondUnits = new Digit(0);
 	}
 	
-//	public void updateTime()
-//	{	
-//		Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
-//		int hour = calendar.get(Calendar.HOUR_OF_DAY);        // gets hour in 12h format
-//		int minute = calendar.get(Calendar.MINUTE); 
-//		int second = calendar.get(Calendar.SECOND);
-//		int millisecond = calendar.get(Calendar.MILLISECOND);
-//		
-//		hourTens = new Digit((hour%100)/10);
-//		hourUnits = new Digit(hour%10);
-//		minuteTens = new Digit((minute%100)/10);
-//		minuteUnits = new Digit(minute%10);
-//		secondTens = new Digit((second%100)/10);
-//		secondUnits = new Digit(second%10);
-//		millisecondHundreds = new Digit((millisecond%1000)/100);
-//		millisecondTens = new Digit((millisecond%100)/10);
-//		millisecondUnits = new Digit(millisecond%10);
-//	}
-	
 	private void drawDigit(int offSetX, int offSetY, Boolean[] LEDs)
 	{
 	    int[] x;
@@ -206,18 +187,6 @@ public class Display extends JPanel
 	    offSetX += Digit.DIGIT_WIDTH + margin;
 	    drawDigit(offSetX,offSetY,secondUnits.getLEDs());
 	    
-//	    offSetX += Digit.DIGIT_WIDTH + margin;
-//	    drawDot(offSetX, offSetY);
-
-//	    offSetX += DOT_SIZE + margin;
-//	    drawDigit(offSetX,offSetY,millisecondHundreds.getLEDs());
-//
-//	    offSetX += Digit.DIGIT_WIDTH + margin;
-//	    drawDigit(offSetX,offSetY,millisecondTens.getLEDs());
-//
-//	    offSetX += Digit.DIGIT_WIDTH + margin;
-//	    drawDigit(offSetX,offSetY,millisecondUnits.getLEDs());
-	    
 	    g2.setStroke(new BasicStroke(1.0f));
 	    g2.setColor(Color.BLACK);
 	    for(int i=0; i<getDisplayHeight(); i++) {
@@ -269,17 +238,17 @@ public class Display extends JPanel
 	
 	private int getDisplayWidth()
 	{
-		return (scale * ((margin * 3) + DOT_SIZE)) +  (Digit.DIGIT_WIDTH + margin) * scale * 6;//(margin * 2) +
+		return (scale * ((margin * 3) + DOT_SIZE)) +  (Digit.DIGIT_WIDTH + margin) * scale * 6;
 	}
 	
 	private int getDisplayHeight()
 	{
-		return (Digit.DIGIT_HEIGHT + margin) * scale;//margin + 
+		return (Digit.DIGIT_HEIGHT + margin) * scale;
 	}
 	
 	@Override
     public  Dimension getPreferredSize()
 	{
-        return new Dimension(getDisplayWidth(), getDisplayHeight()); // scale*((margin*2)+DOT_SIZE)+
+        return new Dimension(getDisplayWidth(), getDisplayHeight());
     }
 }
